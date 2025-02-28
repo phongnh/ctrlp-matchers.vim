@@ -2,7 +2,7 @@
 
 Collection of CtrlP Matchers
 
-- `pfzy` - `ctrlp_matchers#pfzy#match`
+- `pfzy` - `ctrlp_matchers#pfzy#match` (Python port of fzy - https://github.com/kazhala/pfzy)
 - `matchfuzzypos` - `ctrlp_matchers#matchfuzzypos#match`
 - `matchfuzzy` - `ctrlp_matchers#matchfuzzy#match`
 

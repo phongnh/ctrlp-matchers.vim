@@ -9,7 +9,11 @@ endif
 
 let g:loaded_ctrlp_matchers = 1
 
-if !exists('g:ctrlp_match_function')
+if has('nvim')
+    finish
+endif
+
+if !exists('g:ctrlp_match_func')
     function! s:HasPfzy() abort
         try
             python3 import pfzy

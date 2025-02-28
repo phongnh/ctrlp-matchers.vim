@@ -9,10 +9,32 @@ Collection of CtrlP Matchers
 
 ## Installation
 
+### Vim
+
 ```vim
 if has('python3') && executable('pip3')
     Plug 'phongnh/ctrlp-matchers.vim', { do: 'pip3 install --user --upgrade pfzy --break-system-packages' }
 elseif exists('*matchfuzzypos') || exists('matchfuzzy')
     Plug 'phongnh/ctrlp-matchers.vim'
 endif
+```
+
+### Neovim
+
+```lua
+{
+  -- Fuzzy file, buffer, mru, tag, etc finder.
+  -- https://github.com/ctrlpvim/ctrlp.vim
+  "ctrlpvim/ctrlp.vim",
+  dependencies = {
+    -- Collection of CtrlP matchers
+    -- https://github.com/phongnh/ctrlp-matchers.vim
+    "phongnh/ctrlp-matchers.vim",
+    dependencies = {
+      -- A lua implementation of the fzy fuzzy matching algorithm
+      -- https://github.com/swarn/fzy-lua
+      "swarn/fzy-lua",
+    },
+  },
+}
 ```

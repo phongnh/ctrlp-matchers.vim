@@ -10,7 +10,15 @@ endif
 let g:loaded_ctrlp_matchers = 1
 
 if !exists('g:ctrlp_match_function')
-    if has('python3')
+    function! s:HasPfzy() abort
+        try
+            python3 import pfzy
+            return 1
+        catch
+            return 0
+        endtry
+    endfunction
+    if has('python3') && s:HasPfzy()
         let g:ctrlp_match_func = { 'match': 'ctrlp_matchers#pfzy#match' }
     elseif exists('*matchfuzzypos') && exists('*matchfuzzy')
         let g:ctrlp_match_func = { 'match': 'ctrlp_matchers#matchfuzzypos#match' }

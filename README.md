@@ -13,6 +13,7 @@ Collection of CtrlP Matchers
 ### Vim
 
 ```vim
+" vim-plug
 if has('python3') && executable('pip3')
     Plug 'phongnh/ctrlp-matchers.vim', { do: 'pip3 install --user --upgrade pfzy --break-system-packages' }
 elseif exists('*matchfuzzypos') || exists('matchfuzzy')
@@ -23,6 +24,7 @@ endif
 ### Neovim
 
 ```lua
+-- lazy.vim
 {
   -- Fuzzy file, buffer, mru, tag, etc finder.
   -- https://github.com/ctrlpvim/ctrlp.vim

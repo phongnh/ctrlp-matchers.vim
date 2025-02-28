@@ -5,8 +5,7 @@ Collection of CtrlP Matchers
 - `pfzy` - `ctrlp_matchers#pfzy#match` (https://github.com/kazhala/pfzy)
 - `matchfuzzypos` - `ctrlp_matchers#matchfuzzypos#match`
 - `matchfuzzy` - `ctrlp_matchers#matchfuzzy#match`
-- `fzy_lua_native` - `ctrlp_matchers#fzy_lua#match` (https://github.com/romgrk/fzy-lua-native)
-- `fzy_lua` - `ctrlp_matchers#fzy_lua#match` (https://github.com/swarn/fzy-lua)
+- `fzy_lua` - `ctrlp_matchers#fzy_lua#match` (https://github.com/romgrk/fzy-lua-native or https://github.com/swarn/fzy-lua)
 
 ## Installation
 

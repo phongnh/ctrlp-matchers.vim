@@ -49,7 +49,7 @@ function! ctrlp_matchers#fzy_lua#match(items, str, limit, mmode, ispath, crfile,
         return matchfuzzy(a:items, a:str, { 'limit': a:limit })
     endif
 
-    let l:result = v:lua.require('fzy').filter(a:str, a:items)
+    let l:result = v:lua.CtrlPMatchers.fzy(a:str, a:items)
     let l:result = l:result->sort({ x, y -> y[2] - x[2] > 0 ? 1 : (y[2] - x[2] < 0 ? -1 : 0) })
     let l:result = l:result[:(a:limit)]
     let l:items = []

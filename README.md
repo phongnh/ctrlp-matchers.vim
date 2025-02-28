@@ -5,6 +5,7 @@ Collection of CtrlP Matchers
 - `pfzy` - `ctrlp_matchers#pfzy#match` (https://github.com/kazhala/pfzy)
 - `matchfuzzypos` - `ctrlp_matchers#matchfuzzypos#match`
 - `matchfuzzy` - `ctrlp_matchers#matchfuzzy#match`
+- `fzy_lua_native` - `ctrlp_matchers#fzy_lua#match` (https://github.com/romgrk/fzy-lua-native)
 - `fzy_lua` - `ctrlp_matchers#fzy_lua#match` (https://github.com/swarn/fzy-lua)
 
 ## Installation
@@ -31,9 +32,17 @@ endif
     -- https://github.com/phongnh/ctrlp-matchers.vim
     "phongnh/ctrlp-matchers.vim",
     dependencies = {
-      -- A lua implementation of the fzy fuzzy matching algorithm
-      -- https://github.com/swarn/fzy-lua
-      "swarn/fzy-lua",
+        {
+          -- Luajit FFI bindings to FZY
+          -- https://github.com/romgrk/fzy-lua-native
+          "romgrk/fzy-lua-native",
+          build = "make"
+        },
+        -- {
+        --   -- A lua implementation of the fzy fuzzy matching algorithm
+        --   -- https://github.com/swarn/fzy-lua
+        --   "swarn/fzy-lua",
+        -- },
     },
   },
 }

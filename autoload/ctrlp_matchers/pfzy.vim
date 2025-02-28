@@ -1,4 +1,4 @@
-" A matching function for CtrlP using pfzy (pip3 install pfzy -break-system-packages)
+" A matching function for CtrlP using pfzy
 " Arguments:
 " |
 " +- a:items  : The full list of items to search in.

@@ -1,6 +1,6 @@
 function! ctrlp_matchers#GetLinePrefixLen(ispath) abort
     let l:len = len(get(g:, 'ctrlp_line_prefix', '> '))
-    if a:ispath 
+    if a:ispath
         if get(g:, 'ctrlp_devicons_len', 0)
             let l:len += g:ctrlp_devicons_len
         elseif exists('g:ctrlp_formatline_func') && match(g:ctrlp_formatline_func, 'nerdfont#find\|WebDevIconsGetFileTypeSymbol') > -1

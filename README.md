@@ -5,6 +5,7 @@ Collection of CtrlP Matchers
 - `pfzy` - `ctrlp_matchers#pfzy#match` (https://github.com/kazhala/pfzy)
 - `matchfuzzypos` - `ctrlp_matchers#matchfuzzypos#match`
 - `matchfuzzy` - `ctrlp_matchers#matchfuzzy#match`
+- `fzf_lua` - `ctrlp_matchers#fzf_lua#match` (https://github.com/nvim-telescope/telescope-fzf-native.nvim)
 - `fzy_lua` - `ctrlp_matchers#fzy_lua#match` (https://github.com/romgrk/fzy-lua-native or https://github.com/swarn/fzy-lua)
 
 ## Installation
@@ -34,11 +35,17 @@ endif
     "phongnh/ctrlp-matchers.vim",
     dependencies = {
         {
-          -- Luajit FFI bindings to FZY
-          -- https://github.com/romgrk/fzy-lua-native
-          "romgrk/fzy-lua-native",
+          -- FZF sorter for telescope written in c
+          -- https://github.com/nvim-telescope/telescope-fzf-native.nvim
+          "nvim-telescope/telescope-fzf-native.nvim"
           build = "make"
         },
+        -- {
+        --   -- Luajit FFI bindings to FZY
+        --   -- https://github.com/romgrk/fzy-lua-native
+        --   "romgrk/fzy-lua-native",
+        --   build = "make"
+        -- },
         -- {
         --   -- A lua implementation of the fzy fuzzy matching algorithm
         --   -- https://github.com/swarn/fzy-lua

@@ -43,15 +43,6 @@ function! ctrlp_matchers#pfzy#match(items, str, limit, mmode, ispath, crfile, re
         return filter(copy(a:items), 'v:val =~ a:str')
     endif
 
-    if ctrlp#call('s:curtype') ==# 'buf'
-        let s:timer = timer_start(
-                    \ 10,
-                    \ { t -> [clearmatches(), ctrlp_matchers#HighlightDefault(a:str), hlexists('CtrlPLinePre') ? matchadd('CtrlPLinePre', '^>') : '', execute('redraw')] },
-                    \ { 'repeat': 0 }
-                    \ )
-        return matchfuzzy(a:items, a:str, { 'limit': a:limit })
-    endif
-
     " pass arguments to pfzy_match function in pfzy.py
     let s:pfzy_needle = a:str
     let s:pfzy_haystacks = a:items
@@ -63,6 +54,15 @@ function! ctrlp_matchers#pfzy#match(items, str, limit, mmode, ispath, crfile, re
         call add(l:items, row['value'])
         call add(l:list_of_char_positions, row['indices']))
     endfor
+
+    if ctrlp#call('s:curtype') ==# 'buf'
+        let s:timer = timer_start(
+                    \ 10,
+                    \ { t -> [clearmatches(), ctrlp_matchers#HighlightDefault(a:str), hlexists('CtrlPLinePre') ? matchadd('CtrlPLinePre', '^>') : '', execute('redraw')] },
+                    \ { 'repeat': 0 }
+                    \ )
+        return l:items
+    endif
 
     let l:line_prefix_len = ctrlp_matchers#GetLinePrefixLen(a:ispath)
     let s:timer = timer_start(

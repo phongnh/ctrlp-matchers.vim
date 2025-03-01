@@ -40,15 +40,6 @@ function! ctrlp_matchers#fzy_lua#match(items, str, limit, mmode, ispath, crfile,
         return filter(copy(a:items), 'v:val =~ a:str')
     endif
 
-    if ctrlp#call('s:curtype') ==# 'buf'
-        let s:timer = timer_start(
-                    \ 10,
-                    \ { t -> [clearmatches(), ctrlp_matchers#HighlightDefault(a:str), hlexists('CtrlPLinePre') ? matchadd('CtrlPLinePre', '^>') : '', execute('redraw')] },
-                    \ { 'repeat': 0 }
-                    \ )
-        return matchfuzzy(a:items, a:str, { 'limit': a:limit })
-    endif
-
     let l:provider = luaeval("CtrlPMatchers.fzy.provider")
     let l:result = v:lua.CtrlPMatchers.fzy.filter(a:str, a:items)
     let l:result = l:result->sort({ x, y -> y[2] - x[2] > 0 ? 1 : (y[2] - x[2] < 0 ? -1 : 0) })
@@ -65,6 +56,15 @@ function! ctrlp_matchers#fzy_lua#match(items, str, limit, mmode, ispath, crfile,
             call add(l:items, item)
             call add(l:list_of_char_positions, positions->mapnew({ _, pos -> pos - 1 }))
         endfor
+    endif
+
+    if ctrlp#call('s:curtype') ==# 'buf'
+        let s:timer = timer_start(
+                    \ 10,
+                    \ { t -> [clearmatches(), ctrlp_matchers#HighlightDefault(a:str), hlexists('CtrlPLinePre') ? matchadd('CtrlPLinePre', '^>') : '', execute('redraw')] },
+                    \ { 'repeat': 0 }
+                    \ )
+        return l:items
     endif
 
     let l:line_prefix_len = ctrlp_matchers#GetLinePrefixLen(a:ispath)

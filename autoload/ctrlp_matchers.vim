@@ -4,8 +4,9 @@ function! ctrlp_matchers#GetLinePrefixLen(ispath) abort
         if get(g:, 'ctrlp_devicons_len', 0)
             let l:len += g:ctrlp_devicons_len
         elseif exists('g:ctrlp_formatline_func') && match(g:ctrlp_formatline_func, 'nerdfont#find\|WebDevIconsGetFileTypeSymbol') > -1
-            " DevIcons (4) and Space (1)
-            let l:len += 4 + 1
+            " DevIcons (1) and Space (1)
+            let g:ctrlp_devicons_len = 1 + 1
+            let l:len += g:ctrlp_devicons_len
         endif
     endif
     return l:len

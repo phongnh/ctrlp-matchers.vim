@@ -1,3 +1,7 @@
+if has('nvim')
+    finish
+endif
+
 if globpath(&rtp, 'plugin/ctrlp.vim') == ''
     echohl WarningMsg | echomsg 'ctrlp.vim is not found.' | echohl none
     finish
@@ -8,10 +12,6 @@ if get(g:, 'loaded_ctrlp_matchers', 0)
 endif
 
 let g:loaded_ctrlp_matchers = 1
-
-if has('nvim')
-    finish
-endif
 
 if !exists('g:ctrlp_match_func')
     function! s:HasPfzy() abort
@@ -30,4 +30,3 @@ if !exists('g:ctrlp_match_func')
         let g:ctrlp_match_func = { 'match': 'ctrlp_matchers#matchfuzzy#match' }
     endif
 endif
-

@@ -45,8 +45,7 @@ function! ctrlp_matchers#fzf_lua#match(items, str, limit, mmode, ispath, crfile,
     endif
 
     let l:result = v:lua.CtrlPMatchers.fzf(a:str, a:items)
-    let g:result = l:result
-    let l:result = l:result->sort({ x, y -> y[2] - x[2] > 0 ? 1 : (y[2] - x[2] < 0 ? -1 : 0) })
+    " let l:result = l:result->sort({ x, y -> x[2] == y[2] ? 0 : (x[2] > y[2] ? 1 : -1) })
     let l:result = l:result[:(a:limit)]
     let l:items = []
     let l:list_of_char_positions = []

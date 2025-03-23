@@ -12,14 +12,17 @@ if vim.g.ctrlp_match_func == nil then
       local score
       local pos
       for idx, line in ipairs(items) do
-        pos = fzf.get_pos(line, pattern_obj, slab)
-        if pos ~= nil then
-          score = fzf.get_score(line, pattern_obj, slab)
-          result[#result + 1] = { line, pos, score }
+        score = fzf.get_score(line, pattern_obj, slab)
+        if score > 0 then
+          pos = fzf.get_pos(line, pattern_obj, slab)
+          result[#result + 1] = { line, pos, 1 / score }
         end
       end
       fzf.free_pattern(pattern_obj)
       fzf.free_slab(slab)
+      table.sort(result, function(item1, item2)
+        return item1[3] < item2[3]
+      end)
       return result
     end
     vim.g.ctrlp_match_func = { match = "ctrlp_matchers#fzf_lua#match" }
